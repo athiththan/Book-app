@@ -14,9 +14,10 @@ class InfoTable extends React.Component
         <table className="table">
           <thead>
           <tr>
-            <th>S.No</th>
-            <th>Book List</th>
-            <th>Auther Name</th>
+            {/* <th>S.No</th> */}
+            <th>Book Name</th>
+            <th>Author Name</th>
+            <th>Price</th>
             <th>Edit</th>
             <th>Delete</th>
          </tr>
@@ -28,10 +29,17 @@ class InfoTable extends React.Component
               this.props.getData.length > 0 ?
               (
                   this.props.getData.map(e => 
-                    <tr>
+                    <tr key={e.id}>
                     <td>{e.bookname}</td>
                     <td>{e.authorname}</td>
                     <td>{e.prize}</td>
+                    <td><button className="btn btn-primary">EDIT</button></td>
+                    <td><button className="btn btn-danger"
+                    onClick={event=>{
+                      this.props.delete(e)
+                    }}
+                    >DELETE</button></td>
+
                </tr>
                   )
 
