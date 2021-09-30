@@ -15,10 +15,8 @@ const App = () =>
              <Route exact path ="/register" component={Register}/>
              <Route exact path ="/login" component={Login}/>
              <div>
-             <div className="container">
-              
-              
-                <div className="row">
+             <div className="container mt-3">
+              <div className="row">
                   <div className="col-6">
                   <Route exact path = "/user" component={User}/>
 
