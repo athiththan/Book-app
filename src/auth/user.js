@@ -10,7 +10,8 @@ class User extends React.Component
   {
     super();
     this.state = {
-      data:[]
+      data:[],
+      editData:[]
     }
   }
    create = data =>
@@ -46,6 +47,13 @@ class User extends React.Component
       })
     }
   }
+  update = data =>
+  {
+     console.log(data);
+     this.setState({
+       editData:data
+     })
+  }
   
   render()
   {
@@ -53,10 +61,10 @@ class User extends React.Component
     <div className='container mt-3'>
       <div className='row'>
          
-           <InfoForm myData ={this.create}/>
+           <InfoForm myData ={this.create} setForm ={ this.editData}/>
          
          
-        <InfoTable getData = {this.state.data} delete={this.delete}/>
+        <InfoTable getData = {this.state.data} delete={this.delete}  setData={this.update}/>
       
     </div>
     </div>
