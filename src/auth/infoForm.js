@@ -31,6 +31,17 @@ class InfoForm extends React.Component
     this.props.myData(data)
     
 }
+componentWillReceiveProps(props)
+{
+    if(props.setForm.id != null)
+    {
+        this.setState({
+            bookname:props.setForm.bookname,
+            authorname:props.setForm.authorname,
+            prize:props.setForm.prize
+        })
+    }
+}
 
     render()
     {
