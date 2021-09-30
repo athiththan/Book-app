@@ -17,6 +17,7 @@ class User extends React.Component
         {
          axios.post("http://localhost:8080/Api/addbooks",data).then(res => {
            console.log(res);
+           this.getAll()
          })
         }
   componentDidMount()
@@ -25,15 +26,27 @@ class User extends React.Component
   }
   getAll()
   {
-    axios.get("http://localhost:8080/Api/getAll").then(res => {
+    axios.get("http://localhost:8080/api/getAll").then(res => {
       console.log(res.data);
       this.setState({
         data:res.data
       })
         
       })
-    
   }
+
+  delete = data =>
+   {
+    var option = window.confirm('Are You Sure Want to Delete')
+    if(option){
+      axios.delete(`http://localhost:8080/api/delete/${data.id}`).then(res => {
+      console.log(res);
+      this.getAll()
+        
+      })
+    }
+  }
+  
   render()
   {
    return(
@@ -43,7 +56,7 @@ class User extends React.Component
            <InfoForm myData ={this.create}/>
          
          
-        <InfoTable getData = {this.state.data}/>
+        <InfoTable getData = {this.state.data} delete={this.delete}/>
       
     </div>
     </div>
