@@ -33,7 +33,9 @@ class InfoTable extends React.Component
                     <td>{e.bookname}</td>
                     <td>{e.authorname}</td>
                     <td>{e.prize}</td>
-                    <td><button className="btn btn-primary">EDIT</button></td>
+                    <td><button className="btn btn-primary" onClick={event => {
+                        this.props.setData(e)
+                    }}>EDIT</button></td>
                     <td><button className="btn btn-danger"
                     onClick={event=>{
                       this.props.delete(e)
