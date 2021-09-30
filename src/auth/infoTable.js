@@ -29,9 +29,9 @@ class InfoTable extends React.Component
               (
                   this.props.getData.map(e => 
                     <tr>
-                    <td>{e.Name}</td>
-                    <td>{}</td>
-                    <td>{}</td>
+                    <td>{e.bookname}</td>
+                    <td>{e.authorname}</td>
+                    <td>{e.prize}</td>
                </tr>
                   )
 
