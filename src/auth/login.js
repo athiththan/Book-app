@@ -33,10 +33,19 @@ const Login =(props) =>
         }),
         onSubmit: (data) =>{
            console.log(data);
-           toast.success("Success Notification !");
+           
            axios.post('http://localhost:8080/api/login',data)
             .then(res=> {
+                console.log(res)
+                
+                if(res.data.statusCode==200){
+                 localStorage.setItem('auth',JSON.stringify(res.data.UserToken));
+                 toast.success("Success Notification !");
                 props.history.push('./user');
+                }
+                else{
+                    alert("EmailId or Password Wrong")
+                }
             })
            // .catch(err => {
             //    toast.error(err.response.data);
