@@ -8,9 +8,9 @@ class InfoForm extends React.Component
     {
         super();
         this.state ={
-            BookName: "",
-            AutherName: "",
-            Price: ""
+            bookname: "",
+            authorname: "",
+            prize: ""
         };
     }
     infoChange = event =>
@@ -24,9 +24,9 @@ class InfoForm extends React.Component
 { 
     event.preventDefault();
     let data = {
-        BookName:this.state.BookName,
-        AutherName:this.state.AutherName,
-        Price:this.state.Price
+        bookname:this.state.bookname,
+        authorname:this.state.authorname,
+        prize:this.state.prize
     }
     this.props.myData(data)
     
@@ -40,22 +40,22 @@ class InfoForm extends React.Component
                     <lable>BookName</lable>
                     <input type='text' className='form-control' placeholder='enter the bookname'
                     onChange={this.infoChange}
-                    name='BookName'
-                    value={this.state.BookName}/>
+                    name='bookname'
+                    value={this.state.bookname}/>
                 </div>
                 <div className='form-group'>
                     <label>AutherName</label>
                     <input type='text' className='form-control' placeholder='enter authername'
                     onChange={this.infoChange}
-                    name='AutherName'
-                    value={this.state.AutherName}/>
+                    name='authorname'
+                    value={this.state.authorname}/>
                 </div>
                 <div className='form-group'>
                     <label>Price</label>
                     <input type='text' className='form-control' placeholder='price'
                     onChange={this.infoChange}
-                    name='Price'
-                    value={this.state.Price}/>
+                    name='prize'
+                    value={this.state.prize}/>
                 </div>
              <button className='btn btn-primary mt-3'>Submit</button>
             </form>
