@@ -1,64 +1,70 @@
-import React from 'react';
+import React from "react";
 
 
-class InfoTable extends React.Component
+
+class InfoForm extends React.Component
 {
     constructor()
     {
         super();
+        this.state ={
+            bookname: "",
+            authorname: "",
+            prize: ""
+        };
     }
+    infoChange = event =>
+    {
+        const { name,value } = event.target;
+        this.setState({
+            [name]: value
+        })    
+    }
+    infoSubmit = event =>
+{ 
+    event.preventDefault();
+    let data = {
+        bookname:this.state.bookname,
+        authorname:this.state.authorname,
+        prize:this.state.prize
+    }
+    this.props.myData(data)
+    
+}
+
     render()
     {
         return(
-            <div>
-        <table className="table">
-          <thead>
-          <tr>
-            {/* <th>S.No</th> */}
-            <th>Book Name</th>
-            <th>Author Name</th>
-            <th>Price</th>
-            <th>Edit</th>
-            <th>Delete</th>
-         </tr>
-   
-       </thead>
-        <tbody>
-            
-          {
-              this.props.getData.length > 0 ?
-              (
-                  this.props.getData.map(e => 
-                    <tr key={e.id}>
-                    <td>{e.bookname}</td>
-                    <td>{e.authorname}</td>
-                    <td>{e.prize}</td>
-                    <td><button className="btn btn-primary">EDIT</button></td>
-                    <td><button className="btn btn-danger"
-                    onClick={event=>{
-                      this.props.delete(e)
-                    }}
-                    >DELETE</button></td>
+            <form onSubmit= {this.infoSubmit} autoComplete='off'>
+                <div className='form-group'>
+                    <lable>BookName</lable>
+                    <input type='text' className='form-control' placeholder='enter the bookname'
+                    onChange={this.infoChange}
+                    name='bookname'
+                    value={this.state.bookname}/>
+                </div>
+                <div className='form-group'>
+                    <label>AutherName</label>
+                    <input type='text' className='form-control' placeholder='enter authername'
+                    onChange={this.infoChange}
+                    name='authorname'
+                    value={this.state.authorname}/>
+                </div>
+                <div className='form-group'>
+                    <label>Price</label>
+                    <input type='text' className='form-control' placeholder='price'
+                    onChange={this.infoChange}
+                    name='prize'
+                    value={this.state.prize}/>
+                </div>
+             <button className='btn btn-primary mt-3'>Submit</button>
+            </form>
 
-               </tr>
-                  )
 
-                  
-                 
-              )
-              :
-              (
-                  <tr>
-                      <td>No Data</td>
-                      </tr>
-              )
-          }
-          
-       </tbody>
-      </table>
-      </div>
 
-    )
- } 
+
+
+        )
+    }
 }
-export default InfoTable;
+export default InfoForm;
