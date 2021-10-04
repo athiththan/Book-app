@@ -49,7 +49,9 @@ class User extends React.Component
       })
     }
   }
-  
+  update = data =>
+  {
+    console.log(data);
   render()
   {
    return(
@@ -59,7 +61,7 @@ class User extends React.Component
            <InfoForm myData ={this.create}/>
          
          
-        <InfoTable getData = {this.state.data} delete={this.delete}/>
+        <InfoTable getData = {this.state.data}  setData = {this.update} delete={this.delete}/>
       
     </div>
     </div>
