@@ -52,6 +52,7 @@ class User extends React.Component
   update = data =>
   {
     console.log(data);
+  }
   render()
   {
    return(
